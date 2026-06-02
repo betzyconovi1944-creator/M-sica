@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+body{
+    margin:0;
+    background:transparent;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.player{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#d4af37;
+    padding:10px 20px;
+    border-radius:999px;
+    font-family:Arial,sans-serif;
+}
+
+button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.progress-container{
+    width:100px;
+    height:5px;
+    background:rgba(255,255,255,.4);
+    border-radius:20px;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:white;
+    border-radius:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="player">
+    <button id="play">▶</button>
+
+    <div class="progress-container">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <span>🔊</span>
+</div>
+
+<audio id="audio">
+  <source src="https://drive.google.com/uc?export=download&id=1I2ZcKPsfXa8GWeRmryVmIem9fy-V-eaV" type="audio/mpeg">
+</audio>
+
+<script>
+const audio=document.getElementById("audio");
+const play=document.getElementById("play");
+const progress=document.getElementById("progress");
+
+play.onclick=()=>{
+    if(audio.paused){
+        audio.play();
+        play.innerHTML="❚❚";
+    }else{
+        audio.pause();
+        play.innerHTML="▶";
+    }
+};
+
+audio.addEventListener("timeupdate",()=>{
+    let p=(audio.currentTime/audio.duration)*100;
+    progress.style.width=p+"%";
+});
+</script>
+
+</body>
+</html>
