@@ -1,85 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<style>
-body{
-    margin:0;
-    background:transparent;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
+<div style="
+background:#d4af37;
+padding:12px 20px;
+border-radius:50px;
+display:inline-flex;
+align-items:center;
+gap:15px;
+font-family:Arial,sans-serif;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+">
 
-.player{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    background:#d4af37;
-    padding:10px 20px;
-    border-radius:999px;
-    font-family:Arial,sans-serif;
-}
+<a href="https://open.spotify.com/track/29JpPo9ex5jVm85PGBd8mv"
+target="_blank"
+style="
+text-decoration:none;
+color:black;
+font-size:22px;
+font-weight:bold;
+">
+▶
+</a>
 
-button{
-    border:none;
-    background:none;
-    cursor:pointer;
-    font-size:18px;
-}
-
-.progress-container{
-    width:100px;
-    height:5px;
-    background:rgba(255,255,255,.4);
-    border-radius:20px;
-}
-
-.progress{
-    width:0%;
+<div style="
+width:120px;
+height:4px;
+background:rgba(255,255,255,0.5);
+border-radius:20px;
+">
+    <div style="
+    width:35%;
     height:100%;
     background:white;
     border-radius:20px;
-}
-</style>
-</head>
-<body>
-
-<div class="player">
-    <button id="play">▶</button>
-
-    <div class="progress-container">
-        <div class="progress" id="progress"></div>
+    ">
     </div>
-
-    <span>🔊</span>
 </div>
 
-<audio id="audio">
-    <source src="cancionvicente1.mp3" type="audio/mpeg">
-</audio>
+<span style="font-size:18px;">🔊</span>
 
-<script>
-const audio=document.getElementById("audio");
-const play=document.getElementById("play");
-const progress=document.getElementById("progress");
-
-play.onclick=()=>{
-    if(audio.paused){
-        audio.play();
-        play.innerHTML="❚❚";
-    }else{
-        audio.pause();
-        play.innerHTML="▶";
-    }
-};
-
-audio.addEventListener("timeupdate",()=>{
-    let p=(audio.currentTime/audio.duration)*100;
-    progress.style.width=p+"%";
-});
-</script>
-
-</body>
-</html>
+</div>
